@@ -30,8 +30,20 @@ or set it to anything that responds to `#deliver(payload)`.
 ### Gateway configuration
 
 Maia uses the FCM HTTP v1 gateway by default. This assumes you are using `['GOOGLE_APPLICATION_CREDENTIALS']`
-for authentication, so you should be good to go if this environment variable is set. If not, you can pass a custom
-object to the FCM gateway as long as it responds to `#project` and `#token`.
+for authentication, so you should be good to go if this environment variable is set.
+
+Create `config/initializers/maia.rb`:
+
+```
+Rails.application.configure do
+  config.after_initialize do
+    ENV['GOOGLE_APPLICATION_CREDENTIALS'] ||= Rails.root.join('push.json').to_s
+    Maia.gateway = Maia::FCM::Gateway.new
+  end
+end
+```
+
+To use custom credentials, you can pass a custom object to the FCM gateway as long as it responds to `#project` and `#token`.
 
 ```
 Maia.gateway = Maia::FCM::Gateway.new CustomFCMCredentials.new
@@ -126,6 +138,11 @@ class ExampleMessage < Maia::Message
   # Override to true in order to send the iOS content-available flag
   def background?
     false
+  end
+
+  # Time to live for Android (optional)
+  def time_to_live
+    '0s'
   end
 end
 ```

@@ -23,13 +23,15 @@ module Maia
         end
 
         def to_h
-          {
+          hash = {
             priority: priority.to_s,
             notification: {
               color: color,
-              sound: sound,
+              sound: sound
             }.compact
           }
+          hash[:ttl] = @message.time_to_live if @message.respond_to? :time_to_live
+          hash
         end
       end
     end

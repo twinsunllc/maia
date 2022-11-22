@@ -22,8 +22,9 @@ module Maia
       end
 
       def error
-        case json.dig('error', 'status')
-        when 'UNREGISTERED'
+        if json.dig('error', 'status') == 'UNREGISTERED'
+          Maia::Error::Unregistered.new
+        elsif json.dig('error', 'message') == 'Requested entity was not found.'
           Maia::Error::Unregistered.new
         else
           Maia::Error::Generic.new json.dig('error', 'message')
