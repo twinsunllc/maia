@@ -3,7 +3,7 @@ module Maia
     class Unregistered < Generic
       def token
         json = JSON.parse(payload)
-        json['token']
+        json.dig('message', 'token')
       rescue JSON::ParserError
         nil
       end

@@ -15,7 +15,7 @@ describe Maia::Messengers::Inline do
   end
 
   it 'deletes unregistered devices' do
-    payload = { 'token' => maia_devices(:logan).token }.to_json
+    payload = { 'message' => { 'token' => maia_devices(:logan).token } }.to_json
 
     error = Maia::Error::Unregistered.new
     error.payload = payload

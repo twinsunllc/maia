@@ -12,6 +12,7 @@ module Maia
       class MessengerJob < ::ActiveJob::Base
         def perform(payload)
           Maia::Messengers::Inline.new.deliver payload
+        rescue Maia::Error::Unregistered
         end
       end
     end
