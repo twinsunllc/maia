@@ -5,7 +5,7 @@ module Maia
         gateway.deliver payload
       rescue Maia::Error::Unregistered => e
         device = Maia::Device.find_by(token: e.token)
-        device.destroy
+        device&.destroy
         raise
       end
     end

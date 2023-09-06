@@ -10,6 +10,7 @@ module Maia
 
         if response.fail?
           error = response.error
+          Rails.logger.debug "Failure for payload: #{payload}"
           error.payload = payload
           raise error
         end
