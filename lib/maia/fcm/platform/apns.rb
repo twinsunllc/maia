@@ -22,10 +22,15 @@ module Maia
           end
         end
 
+        def collapse_id
+          @message.collapse_identifier
+        end
+
         def to_h
           {
             headers: {
-              'apns-priority': priority.to_s
+              'apns-priority': priority.to_s,
+              'apns-collapse-id': collapse_id
             }.compact,
             payload: {
               aps: {
