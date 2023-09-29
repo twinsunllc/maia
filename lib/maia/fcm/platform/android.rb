@@ -41,15 +41,15 @@ module Maia
             notification: notification_hash
           }
           android_hash[:android_channel_id] = android_channel_id if android_channel_id
+          android_hash[:collapse_key] = collapse_key if collapse_key
         
           hash = {
             android: android_hash
           }
-          hash[:collapse_key] = collapse_key if collapse_key
           hash[:ttl] = @message.time_to_live if @message.respond_to? :time_to_live
           
           hash
-        end            
+        end                  
       end
     end
   end
