@@ -36,20 +36,20 @@ module Maia
             sound: sound
           }.compact
         
-          android_hash = {}
-          android_hash[:android_channel_id] = android_channel_id if android_channel_id
-        
-          hash = {
+          android_hash = {
             priority: priority.to_s,
             notification: notification_hash
           }
-          
-          hash[:android] = android_hash unless android_hash.empty?
+          android_hash[:android_channel_id] = android_channel_id if android_channel_id
+        
+          hash = {
+            android: android_hash
+          }
           hash[:collapse_key] = collapse_key if collapse_key
           hash[:ttl] = @message.time_to_live if @message.respond_to? :time_to_live
           
           hash
-        end        
+        end            
       end
     end
   end
