@@ -31,25 +31,18 @@ module Maia
         end
 
         def to_h
-          notification_hash = {
-            color: color,
-            sound: sound
-          }.compact
-        
-          android_hash = {
-            priority: priority.to_s,
-            notification: notification_hash
-          }
-          android_hash[:android_channel_id] = android_channel_id if android_channel_id
-          android_hash[:collapse_key] = collapse_key if collapse_key
-        
           hash = {
-            android: android_hash
+            priority: priority.to_s,
+            notification: {
+              color: color,
+              sound: sound
+            }.compact
           }
+          hash[:android_channel_id] = android_channel_id if android_channel_id
+          hash[:collapse_key] = collapse_key if collapse_key
           hash[:ttl] = @message.time_to_live if @message.respond_to? :time_to_live
-          
           hash
-        end                  
+        end
       end
     end
   end
