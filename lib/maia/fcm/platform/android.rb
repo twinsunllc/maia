@@ -37,6 +37,7 @@ module Maia
               color: color,
               sound: sound,
               channel_id: android_channel_id
+              group: android_channel_id
             }.compact
           }
           hash[:collapse_key] = collapse_key if collapse_key
