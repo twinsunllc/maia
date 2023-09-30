@@ -36,7 +36,7 @@ module Maia
             notification: {
               color: color,
               sound: sound,
-              channel_id: android_channel_id
+              channel_id: android_channel_id,
               group: android_channel_id
             }.compact
           }
