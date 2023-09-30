@@ -40,7 +40,7 @@ module Maia
             }.compact
           }
           hash[:collapse_key] = collapse_key if collapse_key
-          hash[:group] = android_channel_id if android_channel_id
+          hash[:group_key] = android_channel_id if android_channel_id
           hash[:ttl] = @message.time_to_live if @message.respond_to? :time_to_live
           hash
         end
