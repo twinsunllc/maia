@@ -8,6 +8,7 @@ module Maia
     def background?; end
     def priority; end
     def android_channel_id; end
+    def android_group; end
     def collapse_identifier; end
 
     def data
