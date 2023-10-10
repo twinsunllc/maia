@@ -37,6 +37,7 @@ module Maia
         def to_h
           hash = {
             priority: priority.to_s,
+            collapse_key: collapse_key,
             notification: {
               color: color,
               sound: sound,
@@ -44,7 +45,6 @@ module Maia
               tag: android_tag,
             }.compact
           }
-          hash[:collapse_key] = collapse_key if collapse_key
           hash[:ttl] = @message.time_to_live if @message.respond_to? :time_to_live
           hash
         end
