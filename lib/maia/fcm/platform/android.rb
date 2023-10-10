@@ -26,8 +26,8 @@ module Maia
           @message.android_channel_id
         end
 
-        def android_group
-          @message.android_group
+        def android_tag
+          @message.android_tag
         end
 
         def collapse_key
@@ -41,7 +41,7 @@ module Maia
               color: color,
               sound: sound,
               channel_id: android_channel_id,
-              group_id: android_group
+              tag: android_tag,
             }.compact
           }
           hash[:collapse_key] = collapse_key if collapse_key
