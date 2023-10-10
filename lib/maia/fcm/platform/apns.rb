@@ -23,7 +23,7 @@ module Maia
         end
 
         def collapse_id
-          @message.collapse_identifier
+          @message.collapse_id
         end
 
         def to_h

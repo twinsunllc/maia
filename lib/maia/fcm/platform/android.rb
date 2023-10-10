@@ -22,16 +22,16 @@ module Maia
           end
         end
 
-        def android_channel_id
-          @message.android_channel_id
+        def channel_id
+          @message.channel_id
         end
 
-        def android_tag
-          @message.android_tag
+        def tag
+          @message.tag
         end
 
         def collapse_key
-          @message.collapse_identifier
+          @message.collapse_key
         end
 
         def to_h
@@ -41,8 +41,8 @@ module Maia
             notification: {
               color: color,
               sound: sound,
-              channel_id: android_channel_id,
-              tag: android_tag,
+              channel_id: channel_id,
+              tag: tag,
             }.compact
           }
           hash[:ttl] = @message.time_to_live if @message.respond_to? :time_to_live
