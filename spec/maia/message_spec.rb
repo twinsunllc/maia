@@ -1,5 +1,5 @@
 describe Maia::Message do
-  %i(title body image badge color priority android_channel_id collapse_identifier).each do |prop|
+  %i(title body image badge color priority android_channel_id android_tag collapse_identifier).each do |prop|
     it 'is nil by default' do
       expect(subject.send(prop)).to be_nil
     end
