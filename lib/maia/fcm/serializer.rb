@@ -10,7 +10,6 @@ module Maia
         {
           message: {
             data: @message.data.to_h,
-            notification: notification.to_h,
             android: android.to_h,
             apns: apns.to_h
           }.merge(@target.to_h)
