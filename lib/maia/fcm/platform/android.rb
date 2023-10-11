@@ -38,12 +38,6 @@ module Maia
           hash = {
             priority: priority.to_s,
             collapse_key: collapse_key,
-            notification: {
-              color: color,
-              sound: sound,
-              channel_id: channel_id,
-              tag: tag,
-            }.compact
           }
           hash[:ttl] = @message.time_to_live if @message.respond_to? :time_to_live
           hash
