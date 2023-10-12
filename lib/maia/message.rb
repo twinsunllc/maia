@@ -38,6 +38,9 @@ module Maia
       end
 
       targets.map do |target|
+        puts "Sending message to #{target}"
+        puts target.to_h
+
         messenger.deliver Maia.gateway.serialize(self, target)
       end
     end
