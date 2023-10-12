@@ -13,7 +13,7 @@ module Maia
             notification: notification.to_h,
             android: android.to_h,
             apns: apns.to_h
-          }.merge(@target.to_h)
+          }.merge(@target.to_h).merge(notification_hash)
         }
       end
 
@@ -32,6 +32,10 @@ module Maia
 
         def apns
           Maia::FCM::Platform::APNS.new @message
+        end
+
+        def notification_hash
+          @message.platform == 'android' ? {} : notification.to_h
         end
     end
   end
