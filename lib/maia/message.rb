@@ -11,6 +11,7 @@ module Maia
     def tag; end
     def collapse_id; end
     def collapse_key; end
+    def platform; end
 
     def data
       {}
