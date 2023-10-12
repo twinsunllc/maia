@@ -7,9 +7,15 @@ module Maia
       end
 
       def to_h
+        puts '-----------------'
+        puts '@target.to_h'
+        puts @target.to_h
+        puts '-----------------'
+
         {
           message: {
             data: @message.data.to_h,
+            notification: notification.to_h,
             android: android.to_h,
             apns: apns.to_h
           }.merge(@target.to_h)
