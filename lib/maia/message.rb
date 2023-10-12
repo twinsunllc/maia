@@ -7,6 +7,7 @@ module Maia
     def color; end
     def background?; end
     def priority; end
+    def platform; end
 
     def data
       {}
