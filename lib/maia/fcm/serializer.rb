@@ -10,7 +10,6 @@ module Maia
         {
           message: {
             data: @message.data.to_h,
-            notification: notification.to_h,
             android: android.to_h,
             apns: apns.to_h
           }.merge(@target.to_h).merge(notification_hash)
@@ -35,7 +34,7 @@ module Maia
         end
 
         def notification_hash
-          @message.platform == 'android' ? {} : notification.to_h
+          @message.platform == 'android' ? {} : { notification: notification.to_h }
         end
     end
   end
