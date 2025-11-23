@@ -7,6 +7,8 @@ module Maia
     def color; end
     def background?; end
     def priority; end
+    def platform; end
+    def collapse_identifier; end
 
     def data
       {}
@@ -20,7 +22,7 @@ module Maia
       tap { @target = target }
     end
 
-    def to_json
+    def to_json(*_args)
       to_h.to_json
     end
 
