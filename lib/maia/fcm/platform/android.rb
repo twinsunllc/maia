@@ -27,7 +27,8 @@ module Maia
             priority: priority.to_s,
             notification: {
               color: color,
-              sound: sound
+              sound: sound,
+              tag: @message.collapse_identifier
             }.compact
           }
           hash[:ttl] = @message.time_to_live if @message.respond_to? :time_to_live
